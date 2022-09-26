@@ -39,7 +39,8 @@ DROP DATABASE IF EXISTS SpotifyClone;
   );
 
   CREATE TABLE SpotifyClone.follow_artist(
-    user_id INT NOT NULL PRIMARY KEY,
+    follow_artist_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
     artist_id INT,
       FOREIGN KEY (artist_id) REFERENCES SpotifyClone.artist (artist_id),
       FOREIGN KEY (user_id) REFERENCES SpotifyClone.user (user_id)
@@ -70,12 +71,13 @@ DROP DATABASE IF EXISTS SpotifyClone;
     ('Blind Guardian'),
     ('Nina simone');
 
+
   INSERT INTO SpotifyClone.album (name, release_year, artist_id)
   VALUES
     ('Renassance', 2022, 1),
     ('Jazz', 1978, 2),
     ('Hot Space', 1982, 2),
-    ('Falso Brilhante', 1998), 3,
+    ('Falso Brilhante', 1998, 3),
     ('Vento de Maio', 2001, 3),
     ('QVVJFA?', 2003, 4),
     ('Somewhere Far Beyond', 2007, 5),
@@ -83,16 +85,16 @@ DROP DATABASE IF EXISTS SpotifyClone;
 
   INSERT INTO SpotifyClone.musics (name, duration_in_seconds, album_id)
   VALUES
-    1('BREAK MY SOUL', 279, 1),
-    2('VIRGO’S GROOVE', 369, 1),
-    3('ALIEN SUPERSTAR', 116, 1),
-    4('Don’t Stop Me Now', 203, 2),
-    5('Under Pressure', 152, 3),
-    6('Como Nossos Pais', 105, 4),
-    7('O Medo de Amar é o Medo de Ser Livre', 207, 5),
-    8('Samba em Paris', 267, 6),
-    9('The Bard’s Song', 244, 7),
-    10('Feeling Good', 100, 8);
+    ('BREAK MY SOUL', 279, 1),
+    ('VIRGO’S GROOVE', 369, 1),
+    ('ALIEN SUPERSTAR', 116, 1),
+    ('Don’t Stop Me Now', 203, 2),
+    ('Under Pressure', 152, 3),
+    ('Como Nossos Pais', 105, 4),
+    ('O Medo de Amar é o Medo de Ser Livre', 207, 5),
+    ('Samba em Paris', 267, 6),
+    ('The Bard’s Song', 244, 7),
+    ('Feeling Good', 100, 8);
 
   INSERT INTO SpotifyClone.user (name, age, subscription_date, plan_id)
   VALUES
@@ -121,9 +123,11 @@ DROP DATABASE IF EXISTS SpotifyClone;
     (6, 6),
     (6, 1),
     (7, 6),
-    (8),
+    (8, NULL),
     (9, 3),
     (10, 2);
+
+-- Error Code: 1136. Column count doesn't match value count at row 13
 
   INSERT INTO SpotifyClone.historic (reproduction_date, music_id, user_id)
   VALUES
