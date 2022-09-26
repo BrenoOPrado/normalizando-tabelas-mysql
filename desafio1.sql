@@ -26,6 +26,8 @@ DROP DATABASE IF EXISTS SpotifyClone;
     name VARCHAR(45) NOT NULL,
     duration_in_seconds INT NOT NULL,
     album_id INT NOT NULL,
+    artist_id INT NOT NULL,
+      FOREIGN KEY (artist_id) REFERENCES SpotifyClone.artist (artist_id),
       FOREIGN KEY (album_id) REFERENCES SpotifyClone.album (album_id)
   );
 
@@ -83,18 +85,18 @@ DROP DATABASE IF EXISTS SpotifyClone;
     ('Somewhere Far Beyond', 2007, 5),
     ('I Put A Spell On You', 2012, 6);
 
-  INSERT INTO SpotifyClone.musics (name, duration_in_seconds, album_id)
+  INSERT INTO SpotifyClone.musics (name, duration_in_seconds, album_id, artist_id)
   VALUES
-    ('BREAK MY SOUL', 279, 1),
-    ('VIRGO’S GROOVE', 369, 1),
-    ('ALIEN SUPERSTAR', 116, 1),
-    ('Don’t Stop Me Now', 203, 2),
-    ('Under Pressure', 152, 3),
-    ('Como Nossos Pais', 105, 4),
-    ('O Medo de Amar é o Medo de Ser Livre', 207, 5),
-    ('Samba em Paris', 267, 6),
-    ('The Bard’s Song', 244, 7),
-    ('Feeling Good', 100, 8);
+    ('BREAK MY SOUL', 279, 1, 1),
+    ('VIRGO’S GROOVE', 369, 1, 1),
+    ('ALIEN SUPERSTAR', 116, 1, 1),
+    ('Don’t Stop Me Now', 203, 2, 2),
+    ('Under Pressure', 152, 3, 2),
+    ('Como Nossos Pais', 105, 4, 3),
+    ('O Medo de Amar é o Medo de Ser Livre', 207, 5, 3),
+    ('Samba em Paris', 267, 6, 4),
+    ('The Bard’s Song', 244, 7, 5),
+    ('Feeling Good', 100, 8, 6);
 
   INSERT INTO SpotifyClone.user (name, age, subscription_date, plan_id)
   VALUES
@@ -126,8 +128,6 @@ DROP DATABASE IF EXISTS SpotifyClone;
     (8, NULL),
     (9, 3),
     (10, 2);
-
--- Error Code: 1136. Column count doesn't match value count at row 13
 
   INSERT INTO SpotifyClone.historic (reproduction_date, music_id, user_id)
   VALUES
