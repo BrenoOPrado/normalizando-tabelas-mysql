@@ -69,7 +69,7 @@ DROP DATABASE IF EXISTS SpotifyClone;
     ('Elis Regina'),
     ('Baco Exu do Blues'),
     ('Blind Guardian'),
-    ('Nina simone');
+    ('Nina Simone');
 
   INSERT INTO SpotifyClone.album (name, release_year, artist_id)
   VALUES
